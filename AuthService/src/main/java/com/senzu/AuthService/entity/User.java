@@ -3,6 +3,9 @@ package com.senzu.AuthService.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "UserDetails")
@@ -20,17 +23,32 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "EMAIL")
+    private String email;
+
     @Column(name = "ROLE")
     private String role;
+
+    @CreationTimestamp
+    @Column(name = "CREATED_AT")
+    private LocalDateTime createdAt;
 
     public User() {
 
     }
 
-    public User(String userName, String password, String role) {
+    public User(String userName, String password,String role) {
         this.userName = userName;
         this.password = password;
         this.role = role;
+    }
+
+    public User(String userName, String password, String email, String role, LocalDateTime createdAt) {
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.createdAt = createdAt;
     }
 
     public String getUserName() {
@@ -55,5 +73,21 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

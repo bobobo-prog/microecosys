@@ -2,6 +2,7 @@ package com.senzu.ApiGateway.filter;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
+import java.security.Key;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,8 +52,16 @@ public class JwtAuthenticationFilter implements WebFilter {
 
         try
         {
-            Claims claims = Jwts.parser()
-                    .setSigningKey("MYSECRETKEY")
+//            Claims claims = Jwts.parser()
+//                    .setSigningKey("MYSECRETKEY")
+//                    .parseClaimsJws(token)
+//                    .getBody();
+
+            Key key = Keys.hmacShaKeyFor("MYSECRETKEYMYSECRETKEYMYSECRETKEYMYSECRETKEY".getBytes());
+
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
                     .parseClaimsJws(token)
                     .getBody();
 

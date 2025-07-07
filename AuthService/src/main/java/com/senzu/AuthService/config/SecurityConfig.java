@@ -13,7 +13,7 @@ import java.security.Key;
 @Configuration
 public class SecurityConfig {
 
-    private static final String SECRET = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@";
+    private static final String SECRET = "MYSECRETKEYMYSECRETKEYMYSECRETKEYMYSECRETKEY";
 
     @Bean
     public PasswordEncoder passwordEncoder()

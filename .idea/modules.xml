@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/ApiGatewayWSpringSec.iml" filepath="$PROJECT_DIR$/.idea/ApiGatewayWSpringSec.iml" />
       <module fileurl="file://$PROJECT_DIR$/AuthService/AuthService.iml" filepath="$PROJECT_DIR$/AuthService/AuthService.iml" />
       <module fileurl="file://$PROJECT_DIR$/DiscoveryServer/DiscoveryServer.iml" filepath="$PROJECT_DIR$/DiscoveryServer/DiscoveryServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserService/UserService.iml" filepath="$PROJECT_DIR$/UserService/UserService.iml" />
     </modules>
   </component>
 </project>
