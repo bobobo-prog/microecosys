@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ApiGateway:war">
+    <output-path>$PROJECT_DIR$/ApiGateway/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ApiGateway</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ApiGateway-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ApiGateway:war exploded" />
+    </root>
+  </artifact>
+</component>

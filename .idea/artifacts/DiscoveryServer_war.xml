@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="DiscoveryServer:war">
+    <output-path>$PROJECT_DIR$/DiscoveryServer/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>DiscoveryServer</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="DiscoveryServer-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="DiscoveryServer:war exploded" />
+    </root>
+  </artifact>
+</component>
