@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,37 +26,36 @@ import java.util.stream.Collectors;
 @Component
 public class JwtAuthenticationFilter implements WebFilter {
 
-    private static final List<String> openEndpoints = List.of(
-            "/auth/login",
-            "/auth/register"
-    );
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
 
         ServerHttpRequest request = exchange.getRequest();
         String path = request.getURI().getPath();
+        HttpMethod method = exchange.getRequest().getMethod();
 
         System.out.println("========== JWT Filter triggered for path: " + path);
-        if (openEndpoints.stream().anyMatch(path::startsWith)) {
+        if (path.startsWith("/auth/")) {
+            System.out.println("Skipping JWT authentication for /auth/ path");
             return chain.filter(exchange);
         }
 
+        System.out.println("Processing JWT authentication for protected path");
 
         String authHeader = request.getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         if(authHeader == null || !authHeader.startsWith("Bearer "))
         {
+            System.out.println("No valid Authorization header found");
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return chain.filter(exchange);
         }
 
         String token = authHeader.substring(7);
+        token  = token;
 
         try
         {
-//            Claims claims = Jwts.parser()
-//                    .setSigningKey("MYSECRETKEY")
-//                    .parseClaimsJws(token)
-//                    .getBody();
+
 
             Key key = Keys.hmacShaKeyFor("MYSECRETKEYMYSECRETKEYMYSECRETKEYMYSECRETKEY".getBytes());
 

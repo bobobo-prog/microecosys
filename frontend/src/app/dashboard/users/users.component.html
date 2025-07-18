@@ -1,0 +1,23 @@
+<button (click)="fetchUsers()" class="btn btn-primary">Load Users</button>
+
+<table *ngIf="users.length > 0" class="table table-bordered mt-3">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Role</th>
+      <!-- Add more columns as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="users.length === 0 && dataFetched">No users found.</p>
