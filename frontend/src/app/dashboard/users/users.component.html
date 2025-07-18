@@ -1,23 +1,27 @@
-<button (click)="fetchUsers()" class="btn btn-primary">Load Users</button>
+<div class="min-h-screen bg-gray-100 dark:bg-jet-black p-8">
+  <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">User Details
+    <button (click)="fetchUsers()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow-md transition duration-300">
+      Load Users
+    </button>
+  </h1>
 
-<table *ngIf="users.length > 0" class="table table-bordered mt-3">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Role</th>
-      <!-- Add more columns as needed -->
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.username }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.role }}</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="min-w-full border-collapse border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm text-left text-gray-900 dark:text-white">
+    <thead class="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white">
+      <tr>
+        <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Username</th>
+        <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Email</th>
+        <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td class="border border-gray-300 dark:border-gray-700 px-4 py-2">{{ user.userName }}</td>
+        <td class="border border-gray-300 dark:border-gray-700 px-4 py-2">{{ user.email }}</td>
+        <td class="border border-gray-300 dark:border-gray-700 px-4 py-2">{{ user.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p *ngIf="users.length === 0 && dataFetched">No users found.</p> -->
 
-<p *ngIf="users.length === 0 && dataFetched">No users found.</p>
+

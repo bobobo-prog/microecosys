@@ -13,7 +13,8 @@ import java.util.Date;
 public class JwtUtil {
 
 
-    private static final long EXPIRATION_DATE = 1000 * 60 * 60;
+    private static final long EXPIRATION_DATE = 9000;
+            //1000 * 60 * 60;
 
     private final Key key;
 
